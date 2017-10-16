@@ -1,0 +1,33 @@
+{
+  "name": "hash-history",
+  "description": "Store state in the hash string of the url",
+  "version": "0.0.5",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lukebarlow/hash-history.git"
+  },
+  "files": [
+    "dist",
+    "lib",
+    "src"
+  ],
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "jasmine ./src/specs/",
+    "build": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
+    "prepublish": "npm run test && npm run build"
+  },
+  "dependencies": {
+    "properties-and-events": ">=0.0.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.14.0",
+    "babel-eslint": "^6.1.2",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2017": "^6.14.0",
+    "cross-env": "^2.0.1",
+    "jasmine-es6": "^0.1.8",
+    "mock-browser": "^0.92.12"
+  }
+}
