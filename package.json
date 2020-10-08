@@ -1,7 +1,7 @@
 {
   "name": "hash-history",
   "description": "Store state in the hash string of the url",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "license": "UNLICENSED",
   "repository": {
     "type": "git",
