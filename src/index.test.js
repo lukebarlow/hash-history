@@ -6,10 +6,9 @@ try {
   global.window = MockBrowser.createWindow()
 }
 
-import History from '../'
+import History from '.'
  
 describe('History', () => {
-
   it('set method', () => {
     const h = new History('foo')
     h.set('bar')
@@ -23,17 +22,17 @@ describe('History', () => {
   })
 
   it('get from previously set url', () => {
-    window.location.href = 'about:blank#foo=bar2'
+    window.location.href = 'http://localhost/#foo=bar2'
     const h = new History('foo')
     expect(h.get()).toEqual('bar2')
   })
 
   it('fires a change event when the right part of the url changes', (done) => {
-    window.location.href = 'about:blank#foo=bar2'
+    window.location.href = 'http://localhost/#foo=bar2'
     const spy = jasmine.createSpy('spy')
     const h = new History('foo').on('change', spy)
     setTimeout(() => {
-      window.location.href = 'about:blank#foo=bar99'
+      window.location.href = 'http://localhost/#foo=bar99'
       setTimeout(() => {
         expect(spy.calls.count()).toEqual(1)
         done()
@@ -53,7 +52,6 @@ describe('History', () => {
       }, 20)
     }, 20)
   })
-
 })
 
 export default {}

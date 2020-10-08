@@ -44,7 +44,7 @@ export default class History {
   used to temporarily set the title of the browser while changing the
   url, so this title will show up in history
   */
-  set (value, description) {
+  set (value, description, replace = false) {
     const id = this.id
     //this._current = value
     if (this.codec) {
@@ -73,11 +73,22 @@ export default class History {
     if (description) {
       window.document.title = currentTitle + ' - ' + description
     }
-    window.location.hash = hash
-    if (description) {
-      window.document.title = currentTitle
+
+    if (window.location.hash !== hash) {
+      if (replace) {
+        const l = window.location
+        const newUrl = l.origin + l.pathname + l.search + hash
+        console.log('GOING TO REPLACE THE CURRENT URL')
+        window.history.replaceState(null, description, newUrl)
+      } else {
+        window.location.hash = hash
+      }
+
+      if (description) {
+        window.document.title = currentTitle
+      }
+      this._current = this._getRaw()
     }
-    this._current = this._getRaw()
     this._suppressEvents = false
   }
 
