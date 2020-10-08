@@ -78,7 +78,6 @@ export default class History {
       if (replace) {
         const l = window.location
         const newUrl = l.origin + l.pathname + l.search + hash
-        console.log('GOING TO REPLACE THE CURRENT URL')
         window.history.replaceState(null, description, newUrl)
       } else {
         window.location.hash = hash
